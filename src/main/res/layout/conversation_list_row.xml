@@ -1,0 +1,180 @@
+<layout xmlns:tools="http://schemas.android.com/tools"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <FrameLayout
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:descendantFocusability="blocksDescendants">
+
+        <FrameLayout
+            android:id="@+id/frame"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:background="#00000000"
+            android:clickable="false"
+            android:minHeight="60dp">
+
+            <RelativeLayout
+                android:id="@+id/relative_layout_conv_list_row"
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:layout_margin="7dp"
+                android:background="@drawable/conversation_back"
+                android:orientation="horizontal"
+                android:padding="8dp">
+
+                <com.makeramen.roundedimageview.RoundedImageView
+                    android:id="@+id/conversation_image"
+                    android:layout_width="60dp"
+                    android:layout_height="60dp"
+                    android:layout_alignParentLeft="true"
+                    android:layout_centerVertical="true"
+                    android:layout_marginLeft="5dp"
+                    android:scaleType="centerCrop"
+                    app:riv_corner_radius="30dp" />
+
+                <View
+                    android:id="@+id/is_online_info"
+                    android:layout_width="17dp"
+                    android:layout_height="17dp"
+                    android:layout_alignRight="@id/conversation_image"
+                    android:layout_alignBottom="@id/conversation_image"
+                    android:background="@drawable/online_circle"
+                    android:visibility="gone" />
+
+                <RelativeLayout
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_centerVertical="true"
+                    android:layout_marginRight="25dp"
+                    android:layout_toLeftOf="@id/imageView"
+                    android:layout_toRightOf="@+id/conversation_image"
+                    android:paddingLeft="@dimen/avatar_item_distance">
+
+                    <TextView
+                        android:id="@+id/conversation_name"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignLeft="@+id/conversation_lastwrapper"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="TestConversation"
+                        android:textAppearance="@style/TextAppearance.Conversations.Subhead" />
+
+                    <ImageView
+                        android:id="@+id/pinned_on_top"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_alignWithParentIfMissing="false"
+                        android:layout_alignBottom="@id/conversation_name"
+                        android:layout_marginLeft="4dp"
+                        android:layout_marginBottom="4dp"
+                        android:layout_toEndOf="@id/conversation_name"
+                        android:alpha="?attr/icon_alpha"
+                        android:src="?attr/icon_pinned_on_top"
+                        android:visibility="visible" />
+
+                    <RelativeLayout
+                        android:id="@+id/conversation_lastwrapper"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_below="@id/conversation_name"
+                        android:layout_marginTop="10dp">
+
+                        <TextView
+                            android:id="@+id/sender_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_alignParentLeft="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginRight="?attr/TextSeparation"
+                            android:gravity="center_vertical"
+                            android:minHeight="?attr/IconSize"
+                            android:text="@string/me"
+                            android:textAppearance="@style/TextAppearance.Conversations.Body1.Secondary"
+                            android:visibility="visible" />
+
+                        <LinearLayout
+                            android:id="@+id/txt_img_wrapper"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_alignWithParentIfMissing="true"
+                            android:layout_centerVertical="true"
+                            android:layout_toLeftOf="@+id/notification_status"
+                            android:layout_toRightOf="@id/sender_name"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/conversation_lastmsg_img"
+                                android:layout_width="?attr/IconSize"
+                                android:layout_height="?attr/IconSize"
+                                android:layout_marginRight="?attr/TextSeparation" />
+
+                            <TextView
+                                android:id="@+id/conversation_lastmsg"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:gravity="center_vertical"
+                                android:maxLines="1"
+                                android:minHeight="?attr/LastMessageHeight"
+                                android:scrollHorizontally="false"
+                                android:textAppearance="@style/TextAppearance.Conversations.Body1" />
+                        </LinearLayout>
+
+                        <ImageView
+                            android:id="@+id/notification_status"
+                            android:layout_width="?attr/IconSize"
+                            android:layout_height="?attr/IconSize"
+                            android:layout_alignWithParentIfMissing="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="4dp"
+                            android:layout_toStartOf="@id/unread_count"
+                            android:alpha="?attr/icon_alpha"
+                            android:src="?attr/icon_notifications"
+                            android:visibility="visible" />
+
+                        <com.bitgam.app.ui.widget.UnreadCountCustomView
+                            android:id="@+id/unread_count"
+                            android:layout_width="?attr/IconSize"
+                            android:layout_height="?attr/IconSize"
+                            android:layout_alignParentRight="true"
+                            android:layout_centerVertical="true"
+                            android:layout_marginLeft="3dp"
+                            android:layout_marginTop="2dp"
+                            android:layout_marginBottom="1dp"
+                            android:visibility="gone"
+                            app:backgroundColor="?attr/unread_count" />
+
+                    </RelativeLayout>
+
+                    <TextView
+                        android:id="@+id/conversation_lastupdate"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignBaseline="@+id/conversation_name"
+                        android:layout_alignParentRight="true"
+                        android:gravity="right"
+                        android:text="15:00"
+                        android:textAppearance="@style/TextAppearance.Conversations.Caption"
+                        android:visibility="visible" />
+
+                </RelativeLayout>
+
+                <ImageView
+                    android:id="@+id/imageView"
+                    android:layout_width="25dp"
+                    android:layout_height="25dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_alignParentRight="true"
+                    android:layout_alignParentBottom="false"
+                    android:layout_centerVertical="true"
+                    android:layout_marginEnd="10dp"
+                    app:srcCompat="?attr/ic_selected_conversation"
+                    tools:visibility="visible" />
+            </RelativeLayout>
+
+        </FrameLayout>
+    </FrameLayout>
+</layout>

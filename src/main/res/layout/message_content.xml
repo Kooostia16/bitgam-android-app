@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<merge xmlns:android="http://schemas.android.com/apk/res/android">
+<merge xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <com.bitgam.app.ui.widget.CopyTextView
         android:id="@+id/message_body"
@@ -15,7 +16,7 @@
         android:longClickable="true"
         android:textAppearance="@style/TextAppearance.Conversations.Body1" />
 
-    <ImageView
+    <com.makeramen.roundedimageview.RoundedImageView
         android:id="@+id/message_image"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -23,7 +24,9 @@
         android:background="@color/black87"
         android:longClickable="true"
         android:padding="12dp"
-        android:scaleType="centerCrop" />
+        android:scaleType="centerCrop"
+        android:layout_margin="3dp"
+        app:riv_corner_radius="10dp" />
 
     <Button
         android:id="@+id/download_button"

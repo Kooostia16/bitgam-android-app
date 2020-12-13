@@ -11,6 +11,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.bitgam.app.ui.ConversationsOverviewFragment;
 import com.google.common.base.Optional;
 
 import java.util.List;
@@ -247,6 +248,8 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
                         viewHolder.binding.imageView.setVisibility(View.VISIBLE);
                         conversationsChoosen.add(conversation);
                     }
+
+                    return;
                 }
 
                 listener.onConversationClick(v,conversation);
@@ -257,15 +260,10 @@ public class ConversationAdapter extends RecyclerView.Adapter<ConversationAdapte
         if (!conversationsChoosen.contains(conversation)) {
             viewHolder.binding.imageView.setVisibility(View.GONE);
         } else {
-            if (!choosing) {
-                //viewHolder.binding.imageView.setVisibility(View.GONE);
-            } else {
-                viewHolder.binding.imageView.setVisibility(View.VISIBLE);
-            }
+            viewHolder.binding.imageView.setVisibility(View.VISIBLE);
         }
 
         viewHolder.itemView.setOnLongClickListener(longListener);
-        viewHolder.binding.imageView.setVisibility(View.GONE);
     }
 
     @Override

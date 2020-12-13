@@ -218,68 +218,6 @@
                     </RelativeLayout>
                 </androidx.cardview.widget.CardView>
 
-                <LinearLayout
-                    android:layout_width="match_parent"
-                    android:layout_height="match_parent"
-                    android:orientation="vertical">
-
-                    <Button
-                        android:id="@+id/accountsBtn"
-                        style="@style/Widget.Conversations.Button.Borderless"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="left"
-                        android:text="@string/edit_account_accounts_btn"
-                        android:textAppearance="@style/TextAppearance.Conversations.Caption.OnDark"
-                        android:textColor="?attr/edit_text_color" />
-
-                    <ListView
-                        android:id="@+id/account_list_edit_account"
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:divider="@android:color/transparent"
-                        android:dividerHeight="0dp"
-                        android:visibility="gone"></ListView>
-
-                    <Button
-                        android:id="@+id/settingsBtn"
-                        style="@style/Widget.Conversations.Button.Borderless"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="left"
-                        android:text="@string/edit_account_settings_btn"
-                        android:textAppearance="@style/TextAppearance.Conversations.Caption.OnDark"
-                        android:textColor="?attr/edit_text_color" />
-
-                    <RelativeLayout
-                        android:id="@+id/settingsView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="50dp"
-                        android:visibility="gone">
-
-                    </RelativeLayout>
-
-                    <Button
-                        android:id="@+id/helpBtn"
-                        style="@style/Widget.Conversations.Button.Borderless"
-                        android:layout_width="match_parent"
-                        android:layout_height="50dp"
-                        android:gravity="left"
-                        android:text="@string/edit_account_help_btn"
-                        android:textAppearance="@style/TextAppearance.Conversations.Caption.OnDark"
-                        android:textColor="?attr/edit_text_color" />
-
-                    <RelativeLayout
-                        android:id="@+id/helpView"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:minHeight="50dp"
-                        tools:visibility="gone">
-
-                    </RelativeLayout>
-                </LinearLayout>
-
                 <androidx.cardview.widget.CardView
                     android:id="@+id/os_optimization"
                     android:layout_width="fill_parent"

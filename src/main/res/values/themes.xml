@@ -10,7 +10,7 @@
 
         <item name="attach_anything">@drawable/ic_skrep_black</item>
         <item name="smile">@drawable/ic_smile_black</item>
-        <item name="accountIcon">@drawable/contact2_black</item>
+        <item name="accountIcon">@drawable/ic_contact_black</item>
         <item name="searchIcon">@drawable/ic_search_black_24dp</item>
         <item name="pinIcon">@drawable/ic_pin_black</item>
         <item name="unpinIcon">@drawable/ic_unpin_black</item>
@@ -72,13 +72,6 @@
         <item name="ic_make_audio_call" type="reference">@drawable/ic_call_black_24dp</item>
         <item name="ic_make_video_call" type="reference">@drawable/ic_videocam_black_24dp</item>
 
-        <item name="message_bubble_received_monochrome" type="reference">
-            @drawable/message_bubble_received_white
-        </item>
-        <item name="message_bubble_sent" type="reference">@drawable/message_bubble_sent</item>
-        <item name="message_bubble_received_green" type="reference">
-            @drawable/message_bubble_received
-        </item>
 
         <item name="unread_count">@color/green700_desaturated</item>
 
@@ -95,7 +88,7 @@
         <item name="media_preview_recording" type="reference">@drawable/ic_mic_black_48dp</item>
         <item name="media_preview_audio" type="reference">@drawable/ic_headset_black_48dp</item>
         <item name="media_preview_location" type="reference">@drawable/ic_room_black_48dp</item>
-        <item name="media_preview_contact" type="reference">@drawable/ic_person_black_48dp</item>
+        <item name="media_preview_contact" type="reference">@drawable/ic_contact_black</item>
         <item name="media_preview_app" type="reference">@drawable/ic_android_black_48dp</item>
         <item name="media_preview_calendar" type="reference">@drawable/ic_event_black_48dp</item>
         <item name="media_preview_archive" type="reference">@drawable/ic_archive_black_48dp</item>
@@ -125,6 +118,7 @@
         <item name="icon_remove" type="reference">@drawable/ic_delete_black_24dp</item>
         <item name="icon_search" type="reference">@drawable/ic_search_black_24dp</item>
         <item name="icon_help" type="reference">@drawable/ic_help_black_24dp</item>
+        <item name="icon_help2" type="reference">@drawable/ic_help_black</item>
         <item name="icon_secure" type="reference">@drawable/ic_lock_open_black_24dp</item>
         <item name="icon_settings" type="reference">@drawable/ic_settings_black_24dp</item>
         <item name="icon_share" type="reference">@drawable/ic_share_black_24dp</item>
@@ -170,7 +164,7 @@
         <item name="attach_anything">@drawable/ic_skrep_white</item>
         <item name="smile">@drawable/ic_smile_white</item>
         <item name="searchIcon">@drawable/ic_search_white_24dp</item>
-        <item name="accountIcon">@drawable/contact2_white</item>
+        <item name="accountIcon">@drawable/ic_contact_white</item>
         <item name="pinIcon">@drawable/ic_pin_white</item>
         <item name="unpinIcon">@drawable/ic_unpin_white</item>
         <item name="trashIcon">@drawable/ic_trash_white</item>
@@ -238,14 +232,7 @@
         <item name="ic_attach_location" type="reference">@drawable/ic_attach_location_white</item>
         <item name="ic_attach_photo" type="reference">@drawable/ic_attach_photo_white</item>
         <item name="ic_attach_record" type="reference">@drawable/ic_attach_record_white</item>
-
-        <item name="message_bubble_received_monochrome" type="reference">
-            @drawable/message_bubble_received_grey
-        </item>
-        <item name="message_bubble_sent" type="reference">@drawable/message_bubble_sent_grey</item>
-        <item name="message_bubble_received_green" type="reference">
-            @drawable/message_bubble_received_dark
-        </item>
+        
 
         <item name="unread_count">@color/green900_desaturated</item>
 
@@ -262,7 +249,7 @@
         <item name="media_preview_recording" type="reference">@drawable/ic_mic_white_48dp</item>
         <item name="media_preview_audio" type="reference">@drawable/ic_headset_white_48dp</item>
         <item name="media_preview_location" type="reference">@drawable/ic_room_white_48dp</item>
-        <item name="media_preview_contact" type="reference">@drawable/ic_person_white_48dp</item>
+        <item name="media_preview_contact" type="reference">@drawable/ic_contact_white</item>
         <item name="media_preview_app" type="reference">@drawable/ic_android_white_48dp</item>
         <item name="media_preview_calendar" type="reference">@drawable/ic_event_white_48dp</item>
         <item name="media_preview_archive" type="reference">@drawable/ic_archive_white_48dp</item>
@@ -292,6 +279,7 @@
         <item name="icon_remove" type="reference">@drawable/ic_delete_white_24dp</item>
         <item name="icon_search" type="reference">@drawable/ic_search_white_24dp</item>
         <item name="icon_help" type="reference">@drawable/ic_help_white_24dp</item>
+        <item name="icon_help2" type="reference">@drawable/ic_help_white</item>
         <item name="icon_secure" type="reference">@drawable/ic_lock_open_white_24dp</item>
         <item name="icon_settings" type="reference">@drawable/ic_settings_white_24dp</item>
         <item name="icon_share" type="reference">@drawable/ic_share_white_24dp</item>

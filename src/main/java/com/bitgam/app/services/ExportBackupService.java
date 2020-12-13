@@ -54,7 +54,7 @@ public class ExportBackupService extends Service {
     public static final String CIPHERMODE = "AES/GCM/NoPadding";
     public static final String PROVIDER = "BC";
 
-    public static final String MIME_TYPE = "application/vnd.conversations.backup";
+    public static final String MIME_TYPE = "application/vnd.bitgam.backup";//"application/vnd.conversations.backup";
 
     private static final int NOTIFICATION_ID = 19;
     private static final int PAGE_SIZE = 20;

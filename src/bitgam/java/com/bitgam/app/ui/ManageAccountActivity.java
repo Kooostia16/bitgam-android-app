@@ -1,6 +1,7 @@
 package com.bitgam.app.ui;
 
 import android.content.ActivityNotFoundException;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.security.KeyChain;
@@ -15,7 +16,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView.AdapterContextMenuInfo;
+import android.widget.Button;
+import android.widget.ImageButton;
+import android.widget.ImageView;
+import android.widget.LinearLayout;
 import android.widget.ListView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import org.openintents.openpgp.util.OpenPgpApi;
@@ -30,6 +36,7 @@ import com.bitgam.app.entities.Account;
 import com.bitgam.app.services.XmppConnectionService;
 import com.bitgam.app.services.XmppConnectionService.OnAccountUpdate;
 import com.bitgam.app.ui.adapter.AccountAdapter;
+import com.bitgam.app.ui.util.AvatarWorkerTask;
 import com.bitgam.app.ui.util.MenuDoubleTabUtil;
 import com.bitgam.app.xmpp.XmppConnection;
 import com.bitgam.app.xmpp.Jid;
@@ -40,6 +47,12 @@ import static com.bitgam.app.utils.PermissionUtils.writeGranted;
 public class ManageAccountActivity extends XmppActivity implements OnAccountUpdate, KeyChainAliasCallback, XmppConnectionService.OnAccountCreated, AccountAdapter.OnTglAccountState {
 
     private final String STATE_SELECTED_ACCOUNT = "selected_account";
+    private ImageView avatar;
+    private TextView name;
+    private TextView login;
+    private TextView status;
+    private LinearLayout accountInfoBox;
+    //private Account selectedAccount;
 
     private static final int REQUEST_IMPORT_BACKUP = 0x63fb;
 
@@ -92,11 +105,74 @@ public class ManageAccountActivity extends XmppActivity implements OnAccountUpda
             }
         }
 
+        Context context = this;
+
+        ImageButton editAccount = findViewById(R.id.action_edit_your_name);
+        Button accountsButton = findViewById(R.id.btn_accounts);
+        Button settingsButton = findViewById(R.id.btn_settings);
+        Button helpButton = findViewById(R.id.btn_help);
+
+        avatar = findViewById(R.id.avatar);
+        name = findViewById(R.id.text_name);
+        login = findViewById(R.id.text_jid);
+        status = findViewById(R.id.text_status);
+        accountInfoBox = findViewById(R.id.account_info);
+
         accountListView = findViewById(R.id.account_list);
         this.mAccountAdapter = new AccountAdapter(this, accountList);
         accountListView.setAdapter(this.mAccountAdapter);
-        accountListView.setOnItemClickListener((arg0, view, position, arg3) -> switchToAccount(accountList.get(position)));
+        accountListView.setOnItemClickListener((arg0, view, position, arg3) -> switchToAccountInManager(accountList.get(position)));
+
+
+
+        accountsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (accountListView.getVisibility() == View.VISIBLE) {
+                    accountListView.setVisibility(View.GONE);
+                } else {
+                    accountListView.setVisibility(View.VISIBLE);
+                }
+            }
+        });
+
+        settingsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(context, SettingsActivity.class));
+            }
+        });
+
+        editAccount.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                switchToAccount(selectedAccount);
+            }
+        });
+
         registerForContextMenu(accountListView);
+    }
+
+    private void switchToAccountInManager(Account a) {
+        accountInfoBox.setVisibility(View.VISIBLE);
+        selectedAccount = a;
+        AvatarWorkerTask.loadAvatar(a, avatar, R.dimen.avatar_account_manager);
+        name.setText(a.getDisplayName());
+        login.setText(a.getUsername()+"@"+Config.MAGIC_CREATE_DOMAIN);
+
+        switch (a.getStatus()) {
+            case ONLINE:
+                status.setText("Online");
+                break;
+            case OFFLINE:
+                status.setText("Offline");
+                break;
+            case DISABLED:
+                status.setText("Disabled");
+                break;
+        }
+
+
     }
 
     @Override

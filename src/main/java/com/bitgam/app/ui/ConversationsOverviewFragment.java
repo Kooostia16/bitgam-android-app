@@ -77,21 +77,20 @@ public class ConversationsOverviewFragment extends XmppFragment {
 
 	private final List<Conversation> conversations = new ArrayList<>();
 	public final List<Conversation> choosenConversations = new ArrayList<>();
-	private final List<Boolean> choosenConversationsBoolean = new ArrayList<>();
 	private final List<View> adapterViews = new ArrayList<>();
 	private final PendingItem<Conversation> swipedConversation = new PendingItem<>();
 	private final PendingItem<ScrollState> pendingScrollState = new PendingItem<>();
 	private FragmentConversationsOverviewBinding binding;
 	private ConversationAdapter conversationsAdapter;
 	private XmppActivity activity;
-	private ConversationsActivity activity2;
-	private float mSwipeEscapeVelocity = 0f;
+	//private ConversationsActivity activity2;
+	//private float mSwipeEscapeVelocity = 0f;
 	private PendingActionHelper pendingActionHelper = new PendingActionHelper();
 	private Conversation selectedConversation;
 	public boolean toolbarMode = false; // Are we choosing conversations for delete/pin or not.
 
 
-	private ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0,LEFT|RIGHT) {
+	/*private ItemTouchHelper.SimpleCallback callback = new ItemTouchHelper.SimpleCallback(0,LEFT|RIGHT) {
 		@Override
 		public boolean onMove(RecyclerView recyclerView, RecyclerView.ViewHolder viewHolder, RecyclerView.ViewHolder target) {
 			//todo maybe we can manually changing the position of the conversation
@@ -201,7 +200,7 @@ public class ConversationsOverviewFragment extends XmppFragment {
 		}
 	};
 
-	private ItemTouchHelper touchHelper = new ItemTouchHelper(callback);
+	private ItemTouchHelper touchHelper = new ItemTouchHelper(callback);*/
 
 	public static Conversation getSuggestion(Activity activity) {
 		final Conversation exception;
@@ -247,7 +246,7 @@ public class ConversationsOverviewFragment extends XmppFragment {
 		super.onAttach(activity);
 		if (activity instanceof XmppActivity) {
 			this.activity = (XmppActivity) activity;
-			this.activity2 = (ConversationsActivity) activity;
+			//this.activity2 = (ConversationsActivity) activity;
 		} else {
 			throw new IllegalStateException("Trying to attach fragment to activity that is not an XmppActivity");
 		}
@@ -274,24 +273,14 @@ public class ConversationsOverviewFragment extends XmppFragment {
 
 	@Override
 	public View onCreateView(final LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-		this.mSwipeEscapeVelocity = getResources().getDimension(R.dimen.swipe_escape_velocity);
+		//this.mSwipeEscapeVelocity = getResources().getDimension(R.dimen.swipe_escape_velocity);
 		this.binding = DataBindingUtil.inflate(inflater, R.layout.fragment_conversations_overview, container, false);
 		this.binding.fab.setOnClickListener((view) -> StartConversationActivity.launch(getActivity()));
 		this.conversationsAdapter = new ConversationAdapter(this.activity, this.conversations, this.choosenConversations, this.adapterViews);
+
 		this.conversationsAdapter.setConversationClickListener((view, conversation) -> {
 			if (activity instanceof OnConversationSelected) {
-				if (!toolbarMode) {
 					((OnConversationSelected) activity).onConversationSelected(conversation);
-				} else {
-					int s = conversations.size();
-					for (int i = 0;i < s;i++) {
-						if (conversation.equals(conversations.get(i))) {
-							choosenConversationsBoolean.set(i,!choosenConversationsBoolean.get(i));
-							break;
-						}
-					}
-				}
-
 			} else {
 				Log.w(ConversationsOverviewFragment.class.getCanonicalName(), "Activity does not implement OnConversationSelected");
 			}
@@ -303,7 +292,7 @@ public class ConversationsOverviewFragment extends XmppFragment {
 				if (!toolbarMode) {
 					toolbarMode = true;
 					conversationsAdapter.choosing = true;
-					//activity.invalidateOptionsMenu();
+					activity.invalidateOptionsMenu();
 					((ConversationsActivity )activity).invalidateActionBar();
 					return true;
 				}
@@ -467,10 +456,6 @@ public class ConversationsOverviewFragment extends XmppFragment {
 			return;
 		}
 		this.activity.xmppConnectionService.populateWithOrderedConversations(this.conversations);
-
-		for (int i = 0; i < this.conversations.size();i++) {
-			this.choosenConversationsBoolean.add(false);
-		}
 
 		Conversation removed = this.swipedConversation.peek();
 		if (removed != null) {

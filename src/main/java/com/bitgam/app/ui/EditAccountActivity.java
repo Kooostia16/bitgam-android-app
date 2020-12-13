@@ -101,7 +101,7 @@ public class EditAccountActivity extends OmemoActivity implements OnAccountUpdat
 
     protected final List<Account> accountList = new ArrayList<>();
     protected ListView accountListView;
-    protected AccountAdapter mAccountAdapter;
+    //protected AccountAdapter mAccountAdapter;
 
     private final OnClickListener mCancelButtonClickListener = v -> {
         deleteAccountAndReturnIfNecessary();
@@ -631,19 +631,6 @@ public class EditAccountActivity extends OmemoActivity implements OnAccountUpdat
             this.binding.accountRegisterNew.setVisibility(View.GONE);
         }
         this.binding.actionEditYourName.setOnClickListener(this::onEditYourNameClicked);
-
-        binding.accountsBtn.setOnClickListener(v -> OnAccountsButtonPressed());
-
-        binding.settingsBtn.setOnClickListener(v -> OnSettingssButtonPressed());
-
-        accountListView = findViewById(R.id.account_list_edit_account);
-        this.mAccountAdapter = new AccountAdapter(this, accountList);
-        accountListView.setAdapter(this.mAccountAdapter);
-        accountListView.setOnItemClickListener((parent, view, position, id) -> {
-            switchToAccount(accountList.get(position));
-            finish();
-        });
-        registerForContextMenu(accountListView);
     }
 
 
@@ -704,27 +691,6 @@ public class EditAccountActivity extends OmemoActivity implements OnAccountUpdat
             showMoreInfo.setChecked(binding.serverInfoMore.getVisibility() == View.VISIBLE);
         }
         return super.onPrepareOptionsMenu(menu);
-    }
-
-    public boolean OnAccountsButtonPressed() {
-        if (binding.accountListEditAccount.getVisibility() == View.GONE) {
-            binding.accountListEditAccount.setVisibility(View.VISIBLE);
-        } else {
-            binding.accountListEditAccount.setVisibility(View.GONE);
-        }
-
-        return true;
-    }
-
-    public boolean OnSettingssButtonPressed() {
-        Intent intnt = new Intent(this, SettingsActivity.class);
-        startActivity(intnt);
-
-        return true;
-    }
-
-    public void OnHelpButtonPressed() {
-
     }
 
     @Override
@@ -814,7 +780,7 @@ public class EditAccountActivity extends OmemoActivity implements OnAccountUpdat
             accountList.addAll(xmppConnectionService.getAccounts());
         }
         invalidateOptionsMenu();
-        mAccountAdapter.notifyDataSetChanged();
+        //mAccountAdapter.notifyDataSetChanged();
 
         if (mSavedInstanceAccount != null) {
             try {

@@ -78,6 +78,7 @@ import com.bitgam.app.utils.TimeFrameUtils;
 import com.bitgam.app.utils.UIHelper;
 import com.bitgam.app.xmpp.Jid;
 import com.bitgam.app.xmpp.mam.MamReference;
+import com.makeramen.roundedimageview.RoundedImageView;
 
 public class MessageAdapter extends ArrayAdapter<Message> implements CopyTextView.CopyHandler {
 
@@ -1033,7 +1034,7 @@ public class MessageAdapter extends ArrayAdapter<Message> implements CopyTextVie
         protected LinearLayout message_box;
         protected LinearLayout message_box_rtp;
         protected Button download_button;
-        protected ImageView image;
+        protected RoundedImageView image;
         protected ImageView indicator;
         protected ImageView indicatorReceived;
         protected TextView time;

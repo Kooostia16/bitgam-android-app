@@ -638,7 +638,7 @@ public class ConversationsActivity extends XmppActivity implements OnConversatio
                         actionBar.setSubtitle(" " + conversation.getMucOptions().getUserCount() + " users");
                     } else {
                         actionBar.setTitle(" "+EmojiWrapper.transform(conversation.getName()));
-                        actionBar.setSubtitle(" ");
+                        actionBar.setSubtitle("");
                     }
 
                     actionBar.setLogo(toolbarLogo.getDrawable());
@@ -649,14 +649,16 @@ public class ConversationsActivity extends XmppActivity implements OnConversatio
             if (mainFragment instanceof ConversationsOverviewFragment && ((ConversationsOverviewFragment) mainFragment).toolbarMode) {
                 actionBar.setDisplayHomeAsUpEnabled(true);
                 actionBar.setTitle(R.string.app_name);
-                actionBar.setSubtitle(" ");
+                actionBar.setSubtitle("");
                 actionBar.setLogo(null);
                 return;
             }
             actionBar.setTitle(R.string.app_name);
-            actionBar.setSubtitle(" ");
+            actionBar.setSubtitle("");
             actionBar.setLogo(null);
             actionBar.setDisplayHomeAsUpEnabled(false);
+        } else {
+            Toast.makeText(this, "Actionbar is null", Toast.LENGTH_SHORT);
         }
     }
 
